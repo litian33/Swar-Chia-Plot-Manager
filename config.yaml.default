@@ -125,6 +125,7 @@ jobs:
   #                               chia executable which results in your default keys being used. This is only needed if
   #                               you have chia set up on a machine that does not have your credentials.
   # [OPTIONAL] pool_public_key: Your pool public key. Same information as the above.
+  # [OPTIONAL] pool_contract_address: Pool Contract Address (62 chars)
   #
   # temporary_directory: Can be a single value or a list of values. This is where the plotting will take place. If you
   #                      provide a list, it will cycle through each drive one by one.
@@ -174,62 +175,46 @@ jobs:
   #        cpu_affinity: List of cpu (or threads) to allocate for plot processes. The default example assumes you have
   #                      a hyper-threaded 4 core CPU (8 logical cores). This config will restrict plot processes to use
   #                      logical cores 0-5, leaving logical cores 6 and 7 for other processes (6 restricted, 2 free).
-  - name: micron
+  - name: task1
     max_plots: 999
     farmer_public_key:
-    pool_public_key:
-    temporary_directory: Z:\Plotter
+    pool_contract_address:
+    temporary_directory:
+      - Y:\Plotter1
     temporary2_directory:
-    destination_directory: J:\Plots
-    size: 32
-    bitfield: true
-    threads: 8
-    buckets: 128
-    memory_buffer: 4000
-    max_concurrent: 6
-    max_concurrent_with_start_early: 7
-    initial_delay_minutes: 0
-    stagger_minutes: 60
+      - J:\Plots
+    destination_directory:
+      - J:\Plots
+    threads: 10
+    buckets: 256
+    max_concurrent: 2
+    max_concurrent_with_start_early: 4
+    initial_delay_minutes: 1
+    stagger_minutes: 1
     max_for_phase_1: 2
     concurrency_start_early_phase: 4
     concurrency_start_early_phase_delay: 0
-    temporary2_destination_sync: false
-    exclude_final_directory: false
     skip_full_destinations: true
-    unix_process_priority: 10
-    windows_process_priority: 32
-    enable_cpu_affinity: false
-    cpu_affinity: [ 0, 1, 2, 3, 4, 5 ]
+    unix_process_priority: 15
 
-  - name: inland
+  - name: task1
     max_plots: 999
     farmer_public_key:
-    pool_public_key:
+    pool_contract_address:
     temporary_directory:
       - Y:\Plotter1
-      - Y:\Plotter2
     temporary2_directory:
       - J:\Plots
-      - K:\Plots
     destination_directory:
       - J:\Plots
-      - K:\Plots
-    size: 32
-    bitfield: true
-    threads: 8
-    buckets: 128
-    memory_buffer: 4000
+    threads: 10
+    buckets: 256
     max_concurrent: 2
-    max_concurrent_with_start_early: 3
-    initial_delay_minutes: 0
-    stagger_minutes: 180
-    max_for_phase_1: 1
+    max_concurrent_with_start_early: 4
+    initial_delay_minutes: 1
+    stagger_minutes: 1
+    max_for_phase_1: 2
     concurrency_start_early_phase: 4
     concurrency_start_early_phase_delay: 0
-    temporary2_destination_sync: false
-    exclude_final_directory: false
     skip_full_destinations: true
-    unix_process_priority: 10
-    windows_process_priority: 32
-    enable_cpu_affinity: false
-    cpu_affinity: [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23 ]
+    unix_process_priority: 15
