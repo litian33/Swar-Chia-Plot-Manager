@@ -119,11 +119,11 @@ def load_jobs(config_jobs):
             temporary2_directory = None
         job.temporary2_directory = temporary2_directory
 
-        job.size = info['size']
-        job.bitfield = info['bitfield']
-        job.threads = info['threads']
-        job.buckets = info['buckets']
-        job.memory_buffer = info['memory_buffer']
+        job.size = info.get('size', 32)
+        job.bitfield = info.get('bitfield', True)
+        job.threads = info.get('threads', 4)
+        job.buckets = info.get('buckets', 128)
+        job.memory_buffer = info.get('memory_buffer', 4000)
 
         job.unix_process_priority = info.get('unix_process_priority', 10)
         if not -20 <= job.unix_process_priority <= 20:

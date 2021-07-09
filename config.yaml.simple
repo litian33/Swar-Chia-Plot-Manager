@@ -25,6 +25,10 @@ progress:
   phase3_weight: 42.29
   phase4_weight: 3.88
 
+instrumentation:
+  prometheus_enabled: false
+  prometheus_port: 9090
+
 global:
   max_concurrent: 10
   max_for_phase_1: 3
@@ -53,7 +57,7 @@ jobs:
     skip_full_destinations: true
     unix_process_priority: 15
 
-  - name: task1
+  - name: task2
     max_plots: 999
     farmer_public_key:
     pool_contract_address:
